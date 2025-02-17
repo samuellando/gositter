@@ -9,9 +9,9 @@ func Seq(exs ...Expression) Expression {
 }
 
 func (e *seq) bindRules(rules map[string]*rule) {
-    for _, exp := range e.expressions {
-        exp.bindRules(rules)
-    }
+	for _, exp := range e.expressions {
+		exp.bindRules(rules)
+	}
 }
 
 func (e *seq) Parse(input string) (SyntaxTree, string, error) {

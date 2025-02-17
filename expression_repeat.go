@@ -9,7 +9,7 @@ func Repeat(ex Expression) Expression {
 }
 
 func (e *repeat) bindRules(rules map[string]*rule) {
-    e.expression.bindRules(rules)
+	e.expression.bindRules(rules)
 }
 
 func (e *repeat) Parse(input string) (SyntaxTree, string, error) {
@@ -31,4 +31,3 @@ func (e *repeat) Parse(input string) (SyntaxTree, string, error) {
 	t := &syntaxTree{"", sts}
 	return t, remainder, nil
 }
-

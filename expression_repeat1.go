@@ -1,7 +1,7 @@
 package gositter
 
 import (
-    "fmt"
+	"fmt"
 )
 
 type repeat1 struct {
@@ -13,7 +13,7 @@ func Repeat1(ex Expression) Expression {
 }
 
 func (e *repeat1) bindRules(rules map[string]*rule) {
-    e.expression.bindRules(rules)
+	e.expression.bindRules(rules)
 }
 
 func (e *repeat1) Parse(input string) (SyntaxTree, string, error) {
@@ -27,4 +27,3 @@ func (e *repeat1) Parse(input string) (SyntaxTree, string, error) {
 	}
 	return t, remainder, err
 }
-

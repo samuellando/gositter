@@ -9,7 +9,7 @@ func TestMain(t *testing.T) {
 	g := CreateGrammar("root", map[string]Expression{
 		"root": Repeat1(
 			Choice(
-                Ref("whitespace"),
+				Ref("whitespace"),
 				Ref("tag"),
 				Terminal("\n"))),
 		"tag": Choice(
@@ -29,7 +29,7 @@ func TestMain(t *testing.T) {
 		"h6": Seq(Terminal("######"), Ref("p")),
 		"p": Repeat1(
 			Seq(
-                Repeat1(Choice(
+				Repeat1(Choice(
 					Ref("a"),
 					Ref("img"),
 					Ref("char"),
@@ -73,13 +73,13 @@ func TestMain(t *testing.T) {
 		t.Fatal(err)
 	}
 	fmt.Println(st.Tree())
-    if len(st.Find("tag")) != 5 {
-        t.Fatal("5 tags")
-    }
-    if len(st.Find("a")) != 1 {
-        t.Fail()
-    }
-    if len(st.Find("img")) != 1 {
-        t.Fail()
-    }
+	if len(st.Find("tag")) != 5 {
+		t.Fatal("5 tags")
+	}
+	if len(st.Find("a")) != 1 {
+		t.Fail()
+	}
+	if len(st.Find("img")) != 1 {
+		t.Fail()
+	}
 }

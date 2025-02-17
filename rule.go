@@ -23,4 +23,3 @@ func (r *rule) Parse(input string) (SyntaxTree, string, error) {
 	}
 	return t, remainder, err
 }
-

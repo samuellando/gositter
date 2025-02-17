@@ -1,11 +1,11 @@
 package gositter
 
 type SyntaxTree interface {
-    Tree() string
-    Value() string
-    SetTag(string)
-    Tag() string
-    Find(string, ...bool) []SyntaxTree
+	Tree() string
+	Value() string
+	SetTag(string)
+	Tag() string
+	Find(string, ...bool) []SyntaxTree
 }
 
 type syntaxTree struct {

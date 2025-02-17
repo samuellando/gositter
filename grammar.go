@@ -10,11 +10,11 @@ type grammar struct {
 }
 
 func CreateGrammar(root string, rules map[string]Expression) *grammar {
-    ruleSet := make(map[string]*rule)
-    for k, v := range rules {
-        v.bindRules(ruleSet)
-        ruleSet[k] = CreateRule(k, v)
-    }
+	ruleSet := make(map[string]*rule)
+	for k, v := range rules {
+		v.bindRules(ruleSet)
+		ruleSet[k] = CreateRule(k, v)
+	}
 	return &grammar{ruleSet[root], ruleSet}
 }
 

@@ -29,5 +29,5 @@ func (e *choice) Parse(input string) (SyntaxTree, string, error) {
 		}
 		return &syntaxTree{"", []SyntaxTree{t}}, remainder, err
 	}
-    return nil, input, fmt.Errorf("No option parsed succesfully:\n %s", errs.String())
+	return nil, input, fmt.Errorf("No option parsed succesfully:\n %s", errs.String())
 }

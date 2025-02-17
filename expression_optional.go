@@ -9,7 +9,7 @@ func Optional(ex Expression) Expression {
 }
 
 func (e *optional) bindRules(rules map[string]*rule) {
-    e.expression.bindRules(rules)
+	e.expression.bindRules(rules)
 }
 
 func (e *optional) Parse(input string) (SyntaxTree, string, error) {

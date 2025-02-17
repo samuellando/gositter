@@ -1,8 +1,8 @@
 package gositter
 
 import (
-    "strings"
-    "fmt"
+	"fmt"
+	"strings"
 )
 
 type terminal struct {
@@ -26,7 +26,6 @@ func (e *terminal) Parse(input string) (SyntaxTree, string, error) {
 		}
 		return &token{"", e.pattern}, remainder, nil
 	} else {
-        return nil, input, fmt.Errorf("Terminal did not match: '%s' '%s'", e.pattern, input)
+		return nil, input, fmt.Errorf("Terminal did not match: '%s' '%s'", e.pattern, input)
 	}
 }
-

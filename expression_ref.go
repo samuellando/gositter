@@ -1,20 +1,20 @@
 package gositter
 
 import (
-    "fmt"
+	"fmt"
 )
 
 type ref struct {
-	name string
-    rules map[string]*rule
+	name  string
+	rules map[string]*rule
 }
 
 func Ref(v string) Expression {
-    return &ref{name:v}
+	return &ref{name: v}
 }
 
 func (e *ref) bindRules(rules map[string]*rule) {
-    e.rules = rules
+	e.rules = rules
 }
 
 func (e *ref) Parse(input string) (SyntaxTree, string, error) {

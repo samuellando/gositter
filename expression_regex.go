@@ -1,8 +1,8 @@
 package gositter
 
 import (
-    "regexp"
-    "fmt"
+	"fmt"
+	"regexp"
 )
 
 type regex struct {
@@ -21,15 +21,14 @@ func (e *regex) Parse(input string) (SyntaxTree, string, error) {
 	loc := c.FindStringIndex(input)
 	if loc != nil {
 		var remainder string
-        matchLen := loc[1] - loc[0]
+		matchLen := loc[1] - loc[0]
 		if matchLen == len(input) {
 			remainder = ""
 		} else {
 			remainder = input[matchLen:]
 		}
-        return &token{"", input[loc[0]:loc[1]]}, remainder, nil
+		return &token{"", input[loc[0]:loc[1]]}, remainder, nil
 	} else {
 		return nil, input, fmt.Errorf("Regex did not match '%s' '%s'", e.pattern, input)
 	}
 }
-

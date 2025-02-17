@@ -24,4 +24,3 @@ func (t *token) SetTag(tag string) {
 func (t *token) Find(tag string, recurse ...bool) []SyntaxTree {
 	return []SyntaxTree{}
 }
-
