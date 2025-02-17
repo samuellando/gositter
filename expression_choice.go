@@ -6,11 +6,11 @@ import (
 )
 
 type choice struct {
-	expressions []expression
+	expressions []Expression
 }
 
 // A choice expression, matches the first succesful sub expression
-func Choice(exs ...expression) expression {
+func Choice(exs ...Expression) Expression {
 	return &choice{exs}
 }
 

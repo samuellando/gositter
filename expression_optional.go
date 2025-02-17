@@ -1,11 +1,11 @@
 package gositter
 
 type optional struct {
-	expression expression
+	expression Expression
 }
 
 // Optional expression, matches zero or one occurences of the sub expression
-func Optional(ex expression) expression {
+func Optional(ex Expression) Expression {
 	return &optional{ex}
 }
 

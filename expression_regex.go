@@ -10,7 +10,7 @@ type regex struct {
 }
 
 // A regex expression. Automatically prepends a '^' to the regex.
-func Regex(v string) expression {
+func Regex(v string) Expression {
 	return &regex{v}
 }
 

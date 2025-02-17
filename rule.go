@@ -2,7 +2,7 @@ package gositter
 
 type rule struct {
 	name       string
-	expression expression
+	expression Expression
 }
 
 func (r *rule) parse(input string) (SyntaxTree, string, error) {

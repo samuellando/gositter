@@ -13,7 +13,7 @@ type grammar struct {
 // Create a grammar from a set of rules, identified by a name and expression.
 // The name of the root rule must be provided so that the parsing knows where to
 // Start.
-func CreateGrammar(root string, rules map[string]expression) *grammar {
+func CreateGrammar(root string, rules map[string]Expression) *grammar {
 	ruleSet := make(map[string]*rule)
 	for k, v := range rules {
 		v.bindRules(ruleSet)

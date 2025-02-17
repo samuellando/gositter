@@ -1,11 +1,11 @@
 package gositter
 
 type repeat struct {
-	expression expression
+	expression Expression
 }
 
 // Repetition expression, matches zero or more occurences of the sub expression
-func Repeat(ex expression) expression {
+func Repeat(ex Expression) Expression {
 	return &repeat{ex}
 }
 

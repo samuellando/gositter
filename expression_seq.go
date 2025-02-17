@@ -1,11 +1,11 @@
 package gositter
 
 type seq struct {
-	expressions []expression
+	expressions []Expression
 }
 
 // A sequence expression. Matches one or more sub expressions in order.
-func Seq(exs ...expression) expression {
+func Seq(exs ...Expression) Expression {
 	return &seq{exs}
 }
 

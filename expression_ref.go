@@ -10,7 +10,7 @@ type ref struct {
 }
 
 // A refernece expression, use to refer to another rule in the grammar
-func Ref(v string) expression {
+func Ref(v string) Expression {
 	return &ref{name: v}
 }
 

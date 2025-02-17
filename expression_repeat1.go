@@ -5,11 +5,11 @@ import (
 )
 
 type repeat1 struct {
-	expression expression
+	expression Expression
 }
 
 // Repeart expresion. Matches one or more occurences of the sub expression
-func Repeat1(ex expression) expression {
+func Repeat1(ex Expression) Expression {
 	return &repeat1{ex}
 }
 

@@ -6,7 +6,7 @@ import (
 )
 
 func TestMain(t *testing.T) {
-	g := CreateGrammar("root", map[string]expression{
+	g := CreateGrammar("root", map[string]Expression{
 		"root": Repeat1(
 			Choice(
 				Ref("whitespace"),

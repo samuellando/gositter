@@ -10,7 +10,7 @@ type terminal struct {
 }
 
 // A terminal (or literal) expression.
-func Terminal(v string) expression {
+func Terminal(v string) Expression {
 	return &terminal{v}
 }
 
