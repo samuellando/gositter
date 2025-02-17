@@ -11,6 +11,8 @@ type SyntaxTree interface {
 	Tag() string
 	// Find a tag in this tree, with optinal recursion (default should be false)
 	Find(string, ...bool) []SyntaxTree
+    // Returns all children of the root node
+	Nodes() []SyntaxTree
 }
 
 type syntaxTree struct {
@@ -23,7 +25,7 @@ func (t *syntaxTree) Find(tag string, recurse ...bool) []SyntaxTree {
 	if len(recurse) > 0 {
 		r = recurse[0]
 	}
-	matches := make([]SyntaxTree, 0, 5)
+	matches := make([]SyntaxTree, 0)
 	for _, st := range t.value {
 		if st != nil {
 			if st.Tag() == tag {
@@ -57,6 +59,16 @@ func (t *syntaxTree) Value() string {
 		}
 	}
 	return s
+}
+
+func (t *syntaxTree) Nodes() []SyntaxTree {
+    nodes := make([]SyntaxTree, 0)
+    for _, node := range t.value {
+        if node != nil {
+            nodes = append(nodes, node)
+        }
+    }
+    return nodes
 }
 
 func (t *syntaxTree) Tag() string {

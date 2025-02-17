@@ -17,6 +17,10 @@ func (t *token) Tag() string {
 	return t.tag
 }
 
+func (t *token) Nodes() []SyntaxTree {
+    return []SyntaxTree{}
+}
+
 func (t *token) SetTag(tag string) {
 	t.tag = tag
 }
