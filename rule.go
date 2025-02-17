@@ -2,19 +2,11 @@ package gositter
 
 type rule struct {
 	name       string
-	expression Expression
+	expression expression
 }
 
-func CreateRule(name string, ex Expression) *rule {
-	return &rule{name, ex}
-}
-
-func (r *rule) Name() string {
-	return r.name
-}
-
-func (r *rule) Parse(input string) (SyntaxTree, string, error) {
-	t, remainder, err := r.expression.Parse(input)
+func (r *rule) parse(input string) (SyntaxTree, string, error) {
+	t, remainder, err := r.expression.parse(input)
 	if err != nil {
 		return t, remainder, err
 	}

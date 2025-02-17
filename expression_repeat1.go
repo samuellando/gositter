@@ -5,10 +5,11 @@ import (
 )
 
 type repeat1 struct {
-	expression Expression
+	expression expression
 }
 
-func Repeat1(ex Expression) Expression {
+// Repeart expresion. Matches one or more occurences of the sub expression
+func Repeat1(ex expression) expression {
 	return &repeat1{ex}
 }
 
@@ -16,9 +17,9 @@ func (e *repeat1) bindRules(rules map[string]*rule) {
 	e.expression.bindRules(rules)
 }
 
-func (e *repeat1) Parse(input string) (SyntaxTree, string, error) {
+func (e *repeat1) parse(input string) (SyntaxTree, string, error) {
 	ze := Repeat(e.expression)
-	t, remainder, err := ze.Parse(input)
+	t, remainder, err := ze.parse(input)
 	if err != nil {
 		return t, remainder, err
 	}

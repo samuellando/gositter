@@ -9,7 +9,8 @@ type ref struct {
 	rules map[string]*rule
 }
 
-func Ref(v string) Expression {
+// A refernece expression, use to refer to another rule in the grammar
+func Ref(v string) expression {
 	return &ref{name: v}
 }
 
@@ -17,10 +18,10 @@ func (e *ref) bindRules(rules map[string]*rule) {
 	e.rules = rules
 }
 
-func (e *ref) Parse(input string) (SyntaxTree, string, error) {
+func (e *ref) parse(input string) (SyntaxTree, string, error) {
 	rule, ok := e.rules[e.name]
 	if !ok {
 		return nil, input, fmt.Errorf("Reference not found")
 	}
-	return rule.Parse(input)
+	return rule.parse(input)
 }

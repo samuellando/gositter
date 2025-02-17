@@ -1,7 +1,8 @@
+// A library generating parsers, inspired by tree-sitter
 package gositter
 
 import (
-	"errors"
+	"fmt"
 )
 
 type grammar struct {
@@ -9,22 +10,28 @@ type grammar struct {
 	rules map[string]*rule
 }
 
-func CreateGrammar(root string, rules map[string]Expression) *grammar {
+// Create a grammar from a set of rules, identified by a name and expression.
+// The name of the root rule must be provided so that the parsing knows where to
+// Start.
+func CreateGrammar(root string, rules map[string]expression) *grammar {
 	ruleSet := make(map[string]*rule)
 	for k, v := range rules {
 		v.bindRules(ruleSet)
-		ruleSet[k] = CreateRule(k, v)
+		ruleSet[k] = &rule{name: k, expression: v}
 	}
 	return &grammar{ruleSet[root], ruleSet}
 }
 
+// Parse the input string and return the Syntax Tree.
+// Returns an error if any error occurs during the parsing or if the input is
+// not fully parsed.
 func (g *grammar) Parse(input string) (SyntaxTree, error) {
-	t, remainder, err := g.root.Parse(input)
+	t, remainder, err := g.root.parse(input)
 	if err != nil {
 		return nil, err
 	}
 	if remainder != "" {
-		return nil, errors.New("Remaining: " + remainder + " " + t.Tree())
+		return nil, fmt.Errorf("Remaining: %s %s", remainder, t.Tree())
 	}
 	return t, nil
 }

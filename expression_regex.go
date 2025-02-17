@@ -9,14 +9,15 @@ type regex struct {
 	pattern string
 }
 
-func Regex(v string) Expression {
+// A regex expression. Automatically prepends a '^' to the regex.
+func Regex(v string) expression {
 	return &regex{v}
 }
 
 func (e *regex) bindRules(rules map[string]*rule) {
 }
 
-func (e *regex) Parse(input string) (SyntaxTree, string, error) {
+func (e *regex) parse(input string) (SyntaxTree, string, error) {
 	c := regexp.MustCompile("^" + e.pattern)
 	loc := c.FindStringIndex(input)
 	if loc != nil {

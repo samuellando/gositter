@@ -1,10 +1,11 @@
 package gositter
 
 type repeat struct {
-	expression Expression
+	expression expression
 }
 
-func Repeat(ex Expression) Expression {
+// Repetition expression, matches zero or more occurences of the sub expression
+func Repeat(ex expression) expression {
 	return &repeat{ex}
 }
 
@@ -12,13 +13,13 @@ func (e *repeat) bindRules(rules map[string]*rule) {
 	e.expression.bindRules(rules)
 }
 
-func (e *repeat) Parse(input string) (SyntaxTree, string, error) {
+func (e *repeat) parse(input string) (SyntaxTree, string, error) {
 	sts := make([]SyntaxTree, 0, 5)
 	remainder := input
 	var sub SyntaxTree
 	var err error
 	for {
-		sub, remainder, err = e.expression.Parse(remainder)
+		sub, remainder, err = e.expression.parse(remainder)
 		if err != nil {
 			break
 		} else {

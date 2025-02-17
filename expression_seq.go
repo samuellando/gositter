@@ -1,10 +1,11 @@
 package gositter
 
 type seq struct {
-	expressions []Expression
+	expressions []expression
 }
 
-func Seq(exs ...Expression) Expression {
+// A sequence expression. Matches one or more sub expressions in order.
+func Seq(exs ...expression) expression {
 	return &seq{exs}
 }
 
@@ -14,13 +15,13 @@ func (e *seq) bindRules(rules map[string]*rule) {
 	}
 }
 
-func (e *seq) Parse(input string) (SyntaxTree, string, error) {
+func (e *seq) parse(input string) (SyntaxTree, string, error) {
 	sts := make([]SyntaxTree, 0, 5)
 	remainder := input
 	var sub SyntaxTree
 	var err error
 	for _, ex := range e.expressions {
-		sub, remainder, err = ex.Parse(remainder)
+		sub, remainder, err = ex.parse(remainder)
 		if err != nil {
 			return nil, input, err
 		} else {

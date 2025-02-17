@@ -9,14 +9,15 @@ type terminal struct {
 	pattern string
 }
 
-func Terminal(v string) Expression {
+// A terminal (or literal) expression.
+func Terminal(v string) expression {
 	return &terminal{v}
 }
 
 func (e *terminal) bindRules(rules map[string]*rule) {
 }
 
-func (e *terminal) Parse(input string) (SyntaxTree, string, error) {
+func (e *terminal) parse(input string) (SyntaxTree, string, error) {
 	if strings.HasPrefix(input, e.pattern) {
 		var remainder string
 		if len(input) == len(e.pattern) {

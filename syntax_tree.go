@@ -1,10 +1,15 @@
 package gositter
 
 type SyntaxTree interface {
+	// Get a string reprisentaion of the parse tree
 	Tree() string
+	// Get the value stored in this tree, equivalent to the original text
 	Value() string
+	// Set the tag on this tree, used for finding
 	SetTag(string)
+	// Get the tag of this tree
 	Tag() string
+	// Find a tag in this tree, with optinal recursion (default should be false)
 	Find(string, ...bool) []SyntaxTree
 }
 

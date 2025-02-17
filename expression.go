@@ -1,6 +1,6 @@
 package gositter
 
-type Expression interface {
-	Parse(string) (SyntaxTree, string, error)
+type expression interface {
+	parse(string) (SyntaxTree, string, error)
 	bindRules(map[string]*rule)
 }
